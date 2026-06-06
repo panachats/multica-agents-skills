@@ -6,7 +6,7 @@
 > **Runtime แนะนำ:** เลือก **Claude Code** เป็น runtime ทุก agent (ฟีเจอร์ครบสุด, รองรับ MCP + skill native)
 > **Model:** Opus = งานคิดหนัก (วางแผน/ออกแบบ/audit) · Sonnet = งาน execution (เขียนโค้ด/เทส/เอกสาร)
 > **Instructions เขียนเป็นภาษาอังกฤษ** เพราะ coding tool ทำงานแม่นกว่า — แปลเป็นไทยได้ถ้าต้องการ
-> **Skills ที่มี ✅** = หาดึงจาก ClawHub / Anthropic repo ได้ · **✍️** = ต้องเขียน SKILL.md เอง (domain เฉพาะ DPLUS)
+> **Skills ที่มี ✅** = หาดึงจาก ClawHub / Anthropic repo ได้ · **✍️** = อยู่ใน `agent-skills/` แล้ว พร้อม import
 
 ---
 
@@ -32,7 +32,7 @@ When an issue is assigned to you:
    - UI/UX work -> @ui-designer
    - architecture / schema / API contract -> @solution-architect
    - server logic & data -> @backend-dev
-   - React UI -> @frontend-dev
+   - UI implementation -> @frontend-dev
    - testing -> @qa-engineer
    - deploy & infra -> @devops
    - security review -> @security-analyst (always, before merge)
@@ -46,6 +46,7 @@ Keep priority ranked by business value vs effort. Sentence case, concise.
 **Skills**
 - `prd-writing` ✍️ — โครงสร้าง PRD ของทีม (problem/goal/story/AC)
 - `task-breakdown` ✍️ — กฎการแตก Epic → Story → Task + ตัวอย่าง
+- `domain-context` ✍️ — bootstrap บริบท domain จาก issue แรก
 
 ---
 
@@ -121,7 +122,7 @@ Do NOT implement. Output ADRs, ERDs, DDL, and OpenAPI specs. Flag risks explicit
 | Field | Value |
 |---|---|
 | **Name** | `backend-dev` |
-| **Description** | API, business logic, stored procedure, ERP/linked-server integration + unit test |
+| **Description** | API, business logic, data layer + unit test |
 | **Model** | **Sonnet** (Opus ได้ถ้างานซับซ้อนมาก) |
 
 **Instructions**
@@ -320,16 +321,17 @@ Multica ไม่ใช่ pipeline อัตโนมัติ — ต้อง
 
 ---
 
-## Skill ที่ต้องเขียนเอง (✍️) — สรุปรายการ
+## Skills ในชุด agent-skills (✍️)
 
 | Skill | ใช้กับ agent |
 |---|---|
 | `prd-writing`, `task-breakdown` | PM |
-| `design-system-tokens`, `ui-component-mapping` | Designer |
-| `dbschema-erd`, `domain-context` | Architect, Backend |
+| `domain-context` | PM, Architect, Backend |
+| `design-system-tokens`, `ui-component-mapping` | Designer, Frontend |
+| `dbschema-erd` | Architect |
 | `sql-conventions` | Backend |
 | `frontend-component` | Frontend |
 | `sql-injection-review` | Security |
 | `user-manual` | Tech Writer |
 
-> `domain-context` เป็น skill ที่คุ้มสุดในการเขียน — รวมบริบท systems, segments, และ naming conventions ของ project ไว้ที่เดียว แล้ว attach ให้ทั้ง Architect และ Backend ใช้ร่วมกัน
+> `domain-context` เป็น skill ที่คุ้มสุดในการเขียน — รวมบริบท systems, segments, และ naming conventions ของ project ไว้ที่เดียว แล้ว attach ให้ทั้ง PM, Architect และ Backend ใช้ร่วมกัน
