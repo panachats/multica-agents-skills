@@ -6,7 +6,7 @@
 > **Runtime แนะนำ:** เลือก **Claude Code** เป็น runtime ทุก agent (ฟีเจอร์ครบสุด, รองรับ MCP + skill native)
 > **Model:** Opus = งานคิดหนัก (วางแผน/ออกแบบ/audit) · Sonnet = งาน execution (เขียนโค้ด/เทส/เอกสาร)
 > **Instructions เขียนเป็นภาษาอังกฤษ** เพราะ coding tool ทำงานแม่นกว่า — แปลเป็นไทยได้ถ้าต้องการ
-> **Skills ที่มี ✅** = หาดึงจาก ClawHub / Anthropic repo ได้ · **✍️** = อยู่ใน `agent-skills/` แล้ว พร้อม import
+> **✍️** = อยู่ใน `agent-skills/` แล้ว พร้อม import
 
 ---
 
@@ -80,7 +80,6 @@ Output specs and handoff notes, not production code. Sentence case.
 **Skills**
 - `design-system-tokens` ✍️ — สี/typography/spacing ของ project
 - `ui-component-mapping` ✍️ — แม็พ design element → component ของ project
-- `figma-handoff` ✅ — รูปแบบ handoff note มาตรฐาน
 
 ---
 
@@ -110,9 +109,7 @@ Do NOT implement. Output ADRs, ERDs, DDL, and OpenAPI specs. Flag risks explicit
 ```
 
 **Skills**
-- `system-design-adr` ✅ — เทมเพลต ADR
 - `dbschema-erd` ✍️ — convention ออกแบบ schema + ERD (engine-agnostic)
-- `openapi-contract` ✅ — เขียน API contract แบบ OpenAPI
 - `domain-context` ✍️ — บริบท domain ของ project (systems, segments, naming conventions)
 
 ---
@@ -144,9 +141,7 @@ Follow repo code standards. Never commit secrets. Small, reviewable commits.
 
 **Skills**
 - `sql-conventions` ✍️ — SQL conventions — index-safe filter, CTE aliasing, schema changes (engine-agnostic)
-- `dotnet-api` ✅ (หรือ `node-api` แล้วแต่ stack จริง) — โครง API + auth
 - `domain-context` ✍️ — ใช้ร่วมกับ architect
-- `code-review` ✅ — self-review ก่อนเปิด PR
 
 ---
 
@@ -180,7 +175,6 @@ Follow repo code standards. Keep components small and typed. Sentence case in UI
 - `frontend-component` ✍️ — conventions + stack discovery (flex ตาม project)
 - `ui-component-mapping` ✍️ — แม็พ design element → component ของ project (เติมค่าต่อ project)
 - `design-system-tokens` ✍️ — tokens ของ project (เติมค่าต่อ project)
-- `a11y-checklist` ✅ — รายการตรวจ accessibility
 
 ---
 
@@ -210,9 +204,7 @@ Be precise. A bug report without reproduction steps is not done.
 ```
 
 **Skills**
-- `test-plan` ✅ — เทมเพลต test plan จาก AC
-- `playwright-e2e` ✅ — pattern เขียน e2e
-- `api-testing` ✅ — pattern เทส endpoint
+- *(ไม่มี custom skill — ใช้ความสามารถพื้นฐานของ Claude Code)*
 
 ---
 
@@ -241,9 +233,7 @@ Changes to infra are reviewed like code. Document every pipeline change.
 ```
 
 **Skills**
-- `cicd-pipeline` ✅ — โครง pipeline (GitHub Actions)
-- `docker-deploy` ✅ — Dockerfile + compose convention
-- `deploy-checklist` ✅ — checklist ก่อน go-live + rollback
+- *(ไม่มี custom skill — ใช้ความสามารถพื้นฐานของ Claude Code)*
 
 ---
 
@@ -274,9 +264,7 @@ If the change looks clean, comment "Security review passed" with what you checke
 ```
 
 **Skills**
-- `owasp-audit` ✅ — checklist OWASP Top 10
 - `sql-injection-review` ✍️ — ตรวจ SQL injection ใน query, app code, dynamic SQL
-- `secrets-scan` ✅ — หา secret/token ที่หลุด
 
 ---
 
@@ -303,8 +291,6 @@ Output documentation files only. Sentence case. No marketing fluff.
 ```
 
 **Skills**
-- `api-docs` ✅ — สร้าง doc จาก OpenAPI
-- `release-notes` ✅ — เทมเพลต release notes
 - `user-manual` ✍️ — สไตล์คู่มือของทีม
 
 ---
