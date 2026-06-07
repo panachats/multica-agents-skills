@@ -27,7 +27,7 @@ Break down until each task is small enough to complete and review on its own.
 | UI/UX spec | `@ui-designer` |
 | Architecture, schema, API contract | `@solution-architect` |
 | Server logic, data, SP | `@backend-dev` |
-| React UI | `@frontend-dev` |
+| UI implementation | `@frontend-dev` |
 | Testing | `@qa-engineer` |
 | Deploy, infra | `@devops` |
 | Security review (always, pre-merge) | `@security-analyst` |
@@ -40,3 +40,18 @@ Respect dependencies: architecture/contract before implementation; backend endpo
 ## Priority
 
 Rank by business value vs effort. State the priority on each issue so the board reflects what to pick up first.
+
+## Work size (pick one per issue)
+
+| Size | When to use | Agents involved |
+|---|---|---|
+| **Trivial** | Typo, copy change, config one-liner — no API or UI structure change | Dev who owns the area + `@security-analyst` if auth/data touched |
+| **Small** | Bug fix or minor change — no new API contract or new screen layout | Dev + QA + Security — skip `@ui-designer` and `@solution-architect` unless design/schema changes |
+| **Standard** | New feature, new screen, new endpoint, schema change | Full flow per ordering below |
+
+State the size on the parent issue and each child issue.
+
+## Contract changes
+
+If a dev cannot implement the OpenAPI contract as written, they must comment `@solution-architect`. The architect updates `/docs/api/<issue-key>.yaml` before implementation continues. Do not route frontend integration until the contract on disk matches what backend will ship.
+

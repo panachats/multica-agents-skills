@@ -5,44 +5,61 @@ description: Team-specific domain context — which systems are the source of tr
 
 # Domain context
 
-> This skill is filled in once per project. Keep it as a **local** or **private** workspace skill if it contains internal system names.
+Business vocabulary for this workspace — not a tech stack choice. Keep as a **local** or **private** skill if it contains internal system names.
+
+## Step 0 — discover before filling
+
+Before writing or updating this skill, gather facts from the project:
+
+```shell
+ls migrations/ db/ schema/ prisma/          # existing tables and naming
+cat README.md docs/                         # system names, integrations
+cat .env.example docker-compose.yml         # database and upstream service names
+```
+
+Also extract from the first PRD/issue: segment codes, status values, and object names the feature touches. **Do not invent codes or table names** — copy what the repo or product owner already uses. If something is missing, ask in the issue and update this skill once confirmed.
 
 ## Systems
 
 | Role | Name | Notes |
 |---|---|---|
-| Primary database | `[YOUR_DATABASE]` | main app database |
-| Upstream / source of truth | `[YOUR_UPSTREAM_SYSTEM]` | e.g. ERP, legacy system |
-| [Other integration] | `[NAME]` | |
+| Primary database | | main app database |
+| Upstream / source of truth | | if any — ERP, legacy, SaaS |
+| Other integration | | cache, queue, file store, etc. |
 
-Treat upstream systems as **read-only** from this workspace. Data flows upstream → local only.
+Treat upstream systems as **read-only** from this workspace unless the PRD explicitly allows write-back.
 
 ## Business segments / channels / categories
 
-The canonical codes used for routing, grouping, and filtering. Agents must use these exact values — do not invent new codes without team confirmation.
+Canonical codes for routing, grouping, and filtering. Agents must use these exact values — do not invent new codes without team confirmation.
 
-| Code | Meaning |
-|---|---|
-| `[CODE_A]` | [Description] |
-| `[CODE_B]` | [Description] |
+| Code | Meaning | UI label (optional) |
+|---|---|---|
+| | | |
+
+Add separate tables for other code lists (status, type, region) when the project uses them.
 
 ## Key objects
 
-Tables, views, or procedures agents are likely to encounter or build on.
+Tables, views, models, or procedures agents are likely to encounter or build on.
 
 | Name | Purpose |
 |---|---|
-| `[TABLE_OR_PROC]` | [What it does and any important behaviour] |
+| | |
 
 ## Naming conventions
 
-- Stored procedures / functions: `[your prefix pattern]`
-- Tables: `[convention]`
-- Other: `[convention]`
+Discover from existing schema and code, then record here:
+
+- Tables / columns:
+- Primary keys:
+- Foreign keys:
+- API JSON property casing:
+- Date/time filter rules (e.g. half-open range on indexed columns):
 
 ## Notes
 
-[Performance caveats, data-quality issues, policies the team needs to know.]
+Policies, sync lag, data-quality caveats, and performance rules the team must follow.
 
 ---
 

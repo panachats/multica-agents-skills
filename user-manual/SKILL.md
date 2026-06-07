@@ -40,8 +40,6 @@ Shortcuts, gotchas, common mistakes.
 - Add a screenshot where it removes ambiguity; describe what to look for.
 - Sentence case for headings and UI labels.
 
-## TODO — team specifics
+## Team specifics
 
-> Fill these in: preferred language (Thai / English / bilingual?), product/app name to use in titles, screenshot conventions (tool, annotation style), and where published manuals live (wiki/Confluence/Notion). Once set, note them here so every manual matches.
-
-For release notes and API documentation, use the `release-notes` and `api-docs` skills instead.
+Fill these in once per project: preferred language (Thai / English / bilingual), product/app name for titles, screenshot conventions, and where published manuals live.

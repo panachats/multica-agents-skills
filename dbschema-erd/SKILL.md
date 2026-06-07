@@ -47,4 +47,4 @@ Include cardinality, mark `PK`/`FK`, keep field lists to what's relevant for the
 
 ## Output
 
-Deliver: mermaid ERD + `CREATE TABLE` DDL (in the project's engine syntax) + one-line rationale per design choice. Note any data migration needed and hand the DDL to `backend-dev`.
+Deliver: mermaid ERD + `CREATE TABLE` DDL (in the project's engine syntax) + one-line rationale per design choice. Note any data migration needed and hand the DDL to `backend-dev`. Pair with the OpenAPI contract in `openapi-contract` — field names in API responses should align with the schema.
